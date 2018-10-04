@@ -4,7 +4,7 @@ from forms import UsersForm
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Winchester110283@localhost/homework_users'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:Winchester110283@localhost/homework_users'
 
 db.init_app(app)
 
