@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
 from models import db, Users
 from forms import UsersForm
+import os
+import psycopg2
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:Winchester110283@localhost/homework_users'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Winchester110283@localhost:5432/homework_users'
 
+heroku=Heroku(app)
 db.init_app(app)
 
 app.secret_key = "e14a-key"
