@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Winchester110283@localhost:5432/homework_users'
 
-heroku=Heroku(app)
 db.init_app(app)
 
 app.secret_key = "e14a-key"
