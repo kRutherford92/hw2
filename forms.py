@@ -9,7 +9,6 @@ class UsersForm(FlaskForm):
 	last_name = StringField('Last Name', validators=[DataRequired()])
 	prog_lang_options = [('py', 'Python'), ('java', 'Java'), ('php', 'PHP'), ('cpp', 'CPP'), ('js', 'JavaScript'), ('other', 'other')]
 	prog_lang = SelectField('Programming Language', choices=prog_lang_options, coerce=str, validators=[DataRequired()])
-	#prog_lang = SelectField('Programming Language', choices=[('py', 'py'), ('java', 'java'), ('php', 'php'), ('cpp', 'cpp'), ('js', 'js'), ('c', 'c'), ('other', 'other')])
 	experience_yr = FloatField('Years of Programming Experience', validators=[DataRequired()])
 	age = IntegerField('Age', validators=[DataRequired()])
 	hw1_hrs = FloatField('Hours Spent on HW 1', validators=[DataRequired()])

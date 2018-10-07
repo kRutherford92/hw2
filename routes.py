@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from models import db, Users
 from forms import UsersForm
 import os
@@ -15,7 +15,8 @@ app.secret_key = "e14a-key"
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html') 
+	users = Users.query.all()
+	return render_template('index.html', title='Home', users=users) 
 
 @app.route('/add-user', methods=['GET', 'POST'])
 def add_user():
@@ -35,7 +36,16 @@ def add_user():
 			db.session.add(new_user)
 			db.session.commit()
 			return redirect(url_for('index'))
-		#return redirect(url_for('index'))
+
+@app.route('/load_data', methods=['GET'])
+def load_data():
+	users_json = {'users': []}
+	users = Users.query.all()
+	for user in users:
+		user_info = user.__dict__
+		del user_info['_sa_instance_state']
+		users_json['users'].append(user_info)
+	return jsonify(users_json)
 
 if __name__ == "__main__":
     app.run(debug=True)
