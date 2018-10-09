@@ -1,0 +1,209 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    uid integer NOT NULL,
+    username text NOT NULL,
+    first_name text NOT NULL,
+    last_name text NOT NULL,
+    prog_lang text NOT NULL,
+    experience_yr double precision NOT NULL,
+    age integer NOT NULL,
+    hw1_hrs double precision NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_uid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_uid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_uid_seq OWNER TO postgres;
+
+--
+-- Name: users_uid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_uid_seq OWNED BY public.users.uid;
+
+
+--
+-- Name: users uid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN uid SET DEFAULT nextval('public.users_uid_seq'::regclass);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (uid, username, first_name, last_name, prog_lang, experience_yr, age, hw1_hrs) FROM stdin;
+1	42JJR6G6	Ladonna	Christiansen	py	0.69999999999999996	24	16.199999999999999
+2	R9G3R58R	Stephen	Miller	java	2.2000000000000002	32	17.399999999999999
+3	T41TGW6U	Romeo	Fetters	php	-0.40000000000000002	29	15.9
+4	JYLOKDA3	Jillian	Thompson	php	1.8999999999999999	36	10.6
+5	TPKZBBZO	Joan	Post	php	0.90000000000000002	38	20
+6	ULMZXQS0	Latoya	Mitchell	php	3.1000000000000001	36	14.699999999999999
+7	21MEUXF9	Tommy	Mills	cpp	3.1000000000000001	27	18.899999999999999
+8	SBBAFXVF	Juanita	Brooks	php	2.3999999999999999	29	15.699999999999999
+9	OHGK4V6C	Stephanie	Dyer	cpp	1.8	34	13.4
+10	XYFKTDBI	Marina	Stiles	cpp	2.7999999999999998	29	18.699999999999999
+11	VD7SKDJY	Linda	Muhammad	other	2	36	18.399999999999999
+12	HV6AWU8O	Betty	Perry	java	3.2000000000000002	27	13
+13	791X02PB	Cecelia	Foxworth	php	2.2999999999999998	27	16.600000000000001
+14	1WHVX2GK	William	Mcmillin	cpp	-0.59999999999999998	30	16.800000000000001
+15	7YH7FF0G	Sean	Stemple	py	2.3999999999999999	33	15.300000000000001
+16	RAMP8H2O	Frank	Smith	java	1.3	34	11.199999999999999
+17	0MCI5FZW	Henry	Roland	php	1.1000000000000001	36	18.800000000000001
+18	D6AEM8R6	Robert	Cavazos	js	0.90000000000000002	25	11.6
+19	PWMH85H1	Ann	Howe	java	1.5	35	12.1
+20	B50W8053	Jason	Bowman	php	3	32	13.800000000000001
+21	4PPGOBTF	Veronica	Muniz	cpp	2.1000000000000001	32	13.5
+22	EJ4291DZ	Hazel	Becker	php	2.2000000000000002	21	17.100000000000001
+23	5DAEGPW9	Jesse	Billings	php	0.69999999999999996	34	12.6
+24	75NYZQSW	Carmen	Foster	js	0.59999999999999998	24	16.5
+25	RBXVNB1R	Jonathan	Hockensmith	other	0.80000000000000004	33	14.6
+26	G6CGIXM7	Derek	Chong	php	3.1000000000000001	25	18.399999999999999
+27	UPMJESI7	Lori	Bono	cpp	1	29	13.4
+28	RPUYZRY7	Joseph	Jacobs	php	0.80000000000000004	30	16.699999999999999
+29	LF8PDA2P	Maria	Hawes	java	0.5	30	11.5
+30	XRV0IT0S	Martin	Grubb	py	1.2	24	8.1999999999999993
+31	KJY673TG	Edith	Smith	php	1.8	42	13.5
+32	Z6DK3K7O	Keiko	Oliver	java	5.0999999999999996	27	15.6
+33	O2C99ML1	Christina	Brown	php	2.5	31	16.699999999999999
+34	YXYF7SMA	Jeannie	Christensen	other	1.6000000000000001	22	20.800000000000001
+35	D4QD7SIM	Joyce	Brown	cpp	1.2	29	17.600000000000001
+36	PDZ3H1HY	Nelson	Dodson	other	2	27	10
+37	EK6YHTQY	Carroll	Bunn	js	2.2999999999999998	28	20.100000000000001
+38	OT33WO4K	Carol	Grim	js	4.0999999999999996	37	18.699999999999999
+39	V7S59NIA	Theda	Asquith	other	1.8999999999999999	30	9.5999999999999996
+40	6VUAWCI7	Kelli	Jarosz	java	0.29999999999999999	42	7.7999999999999998
+41	4WEY4NY3	Harlan	Scott	cpp	2.2999999999999998	29	11.300000000000001
+42	V5UNF2RI	Dorothy	Fries	other	3.5	28	7.5
+43	JRS0WX0Z	Delaine	Hall	js	2.3999999999999999	31	13.699999999999999
+44	58UEO0BE	Carmela	Ball	cpp	1.2	27	19.5
+45	IFWALH6W	Martha	Mortenson	php	1	24	14
+46	ZF0DAKZ4	Sandra	Rodriguez	php	0.90000000000000002	23	19.399999999999999
+47	F2EQLCU7	Randy	Price	java	2.6000000000000001	42	16.600000000000001
+48	9ETIZ1EL	Fernando	Lollis	js	2.2999999999999998	27	18.800000000000001
+49	XHN9N3K1	Edward	Armstead	php	1	29	14.199999999999999
+50	3SHFUN9G	Patricia	Yarbrough	py	3.3999999999999999	35	14.9
+51	TKO3BWHE	Amanda	Frech	py	1.3999999999999999	26	17.699999999999999
+52	Q1W95BXQ	Frances	Miller	cpp	1.7	31	16.5
+53	LU842237	Sandra	Small	php	1.7	32	14.5
+54	5UJN0N3E	Lori	Rothwell	py	1.7	33	12.1
+55	VVTVYZLG	Mildred	Aponte	cpp	1	36	15.800000000000001
+56	1FMOWV8V	Ricky	August	other	2.6000000000000001	30	15.199999999999999
+57	BKZP4UOH	Troy	Toro	js	2.7999999999999998	30	16.199999999999999
+58	PG1IAEG0	Cherise	Thornton	java	1.3999999999999999	27	21.600000000000001
+59	DZZLW1KD	Mark	Williams	cpp	2.8999999999999999	21	18
+60	08QNWFS0	Janice	Troublefield	other	2	31	17.399999999999999
+61	KFY29VUX	John	Allred	java	2.3999999999999999	39	19.399999999999999
+62	WXTNOLY0	William	Louis	java	2.7000000000000002	27	14.5
+63	IMLOKRCV	Tiffany	King	py	1.8	31	14.300000000000001
+64	SOH7C9MV	Carl	Simmons	js	2.7000000000000002	31	18
+65	RAT7T778	Sharon	Kull	py	1.8999999999999999	28	16.199999999999999
+66	QDEY9OQK	Elizabeth	Freeman	php	0.90000000000000002	32	19.800000000000001
+67	YP3491W3	Jasmine	Martin	other	2.2999999999999998	27	10.300000000000001
+68	PMYKWMEW	Jeremy	Mann	other	2.2000000000000002	42	16.699999999999999
+69	UCIJCS96	Vaughn	Tacadina	py	0.40000000000000002	25	14.9
+70	WK7UDP9M	Janie	Jean	py	0.80000000000000004	29	13.199999999999999
+71	8G0CY0D2	Ruth	Ponce	php	1	28	15
+72	5PPQ0ASH	Keith	Williams	other	0.5	33	16.199999999999999
+73	VU2CB042	Jamie	Hannon	php	2.5	27	16.399999999999999
+74	A2OH3V6B	Arlene	Davis	php	2.7000000000000002	29	20.5
+75	2KZIBBUK	Roger	Endres	other	1.3	26	20.199999999999999
+76	NMKL9DQ3	Jessica	Underwood	other	0.90000000000000002	32	16.300000000000001
+77	XVZEVFZF	Thomas	Mikula	other	2.1000000000000001	31	11.6
+78	U46Q4VNE	Homer	Larson	php	2.2000000000000002	28	7.0999999999999996
+79	YGFQ3P8X	Matthew	Seymour	other	1.2	33	12.1
+80	B6BQ7SIT	Norman	Tracy	php	1.8	32	11.699999999999999
+81	SWYC38ON	Thelma	Brockington	cpp	4.2000000000000002	39	13.300000000000001
+82	1PTZEDFT	Elizabeth	Stephenson	cpp	3.6000000000000001	28	20.399999999999999
+83	KPXBFXG6	Thomas	Potts	js	1	28	17.699999999999999
+84	EV0YO7LC	Magaly	Fuentes	js	1.8	32	13
+85	NA1S3D9B	Isabel	Ruacho	js	2.2000000000000002	27	17.5
+86	A8ZQH34Y	Van	Bush	py	0.59999999999999998	18	12.6
+87	STB00YJJ	Michelle	Castillo	js	2.2999999999999998	38	17.399999999999999
+88	W64D5C2N	Aaron	Trimble	php	1.8	33	14.9
+89	TC633AHL	Juanita	Harris	php	3.7999999999999998	27	13.5
+90	37FU95TE	Elizabeth	Reyes	py	1.1000000000000001	39	17.100000000000001
+91	BBKR7WP0	Ruth	Coppa	cpp	2.2000000000000002	32	15.1
+92	1SJV0MZ4	Margaret	Schrunk	php	0.90000000000000002	18	13.300000000000001
+93	O10GCFYN	Ryan	Welchel	php	1.5	37	16.600000000000001
+94	ZANGMH64	Louis	Barger	java	5.2000000000000002	35	12.699999999999999
+95	LT42D4HR	Donna	Harding	py	0.40000000000000002	29	17.699999999999999
+96	30GFSKEC	Ellen	Helems	cpp	2.7000000000000002	33	16.800000000000001
+97	A7YS6UQ3	Bradford	Fernandez	php	2.8999999999999999	32	17.699999999999999
+98	PNRI9PGX	Christopher	Tuttle	java	1.8	33	24.699999999999999
+99	U4X5LFM4	Wallace	Kucera	py	1.2	27	21.199999999999999
+100	TAVAZ8KP	Anthony	Guerrero	js	1	36	20.600000000000001
+\.
+
+
+--
+-- Name: users_uid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_uid_seq', 101, true);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (uid);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
