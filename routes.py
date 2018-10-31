@@ -3,10 +3,12 @@ from models import db, Users
 from forms import UsersForm
 import os
 import psycopg2
+from flask_heroku import Heroku
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Winchester110283@localhost:5432/homework_users'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Winchester110283@localhost:5432/homework_users'
+heroku = Heroku(app)
 
 db.init_app(app)
 
